@@ -34,11 +34,51 @@ ECMA => ECMAScript (ES)
 2015 6.0 => let and const keywords
 2024 
 
+JS disadvantages:
+--------------------------
+1. no static type checking
+2. no strict typing
+
+TypeScript:
+----------------------------------
+1. static type checking
+2. strict typing
+
+transpilation:
+a. JS (ES6+) => Vanilla JS (<ES6)
+b. TS (code ES6+) => Vanilla JS  (<es6)
+
+transpiler tool: 
+a. JS (ES6+) => Vanilla JS (<ES6)
+	babel 
+b. TS (code ES6+) => Vanilla JS  (<es6)
+	typescript compiler (tsc)
 
 
 
+package installation:
+tool: NPM, bower, yarn etc.
+
+package.json file creation:
+---------------------------------
+1. manually
+2. using npm tool
+	> npm init [--yes]
 
 
+global installation:
+>npm i <package-name> --location=global
+directory: C:\Users\<user-name>\AppData\Roaming\npm
+
+local installation:
+app-dir>npm i <package-name>
+
+TS extra data types:
+any, unknown, Partial, Optional etc.
+
+To create tsconfig.json file 
+1. manually
+2. command of tsc => >tsc --init
 
 
 

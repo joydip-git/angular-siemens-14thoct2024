@@ -1,0 +1,15 @@
+https://github.com/joydip-git/angular-siemens-14thoct2024
+
+
+Roadmap to Angular:
+-----------------------------
+JavaScript and TypeScript
+Node JS
+
+Angular
+
+
+S/W required:
+----------------------
+Node JS
+VS Code

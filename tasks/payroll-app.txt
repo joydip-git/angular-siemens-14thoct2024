@@ -1,0 +1,14 @@
+developer: 
+	data: name, id, basic, da, hra, total, incentive
+	func: calculateSalary()=> void
+
+hr: 
+	data: name, id, basic, da, hra, total, gratuity
+	func: calculateSalary()=> void
+
+create 4 objects (2 each) of both the classes
+store them in an array
+calculate salary of all of them
+print the employee details
+filter the employess whose totala salary is more than a threshold value
+

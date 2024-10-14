@@ -5,10 +5,16 @@
     "target": "ES5",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "types": [
+      "reflect-metadata"
+    ],
     "module": "CommonJS",
     "lib": [
       "DOM",
       "ES2022"
-    ]
+    ],
+    "moduleResolution": "Node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

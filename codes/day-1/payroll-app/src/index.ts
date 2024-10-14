@@ -1,5 +1,9 @@
+import { TOKENS } from "./config/tokens";
+import { appContainer } from "./IoC/appcontainer";
 import { Developer } from "./models/developer"
+import { Employee } from "./models/employee";
 import { Hr } from "./models/hr"
+import { Manager } from "./services/abstraction/manager";
 import { EmployeeManager } from "./services/employeemanager";
 
 //4. UI logic
@@ -11,7 +15,9 @@ const sunilDev = new Developer(4, 'sunil', 2000, 3000, 4000, 5000)
 const ramHr = new Hr(2, 'ram', 1000, 2000, 3000, 4000)
 
 //4.b: adding one employee at a time
-const manager = new EmployeeManager()
+//const manager = new EmployeeManager()
+const manager: Manager<Employee, number> = appContainer.get<Manager<Employee, number>>(TOKENS.EMPLOYEE_SERVICE_MANAGER)
+
 manager.add(vinodDev)
 manager.add(anilHr)
 manager.add(sunilDev)
@@ -33,5 +39,5 @@ printEmployees()
 //4.e: filtering employees with salary more than 12000
 console.log("\n\n filtered employees\n");
 manager
-    .filterBySalary(12000)
+    .filterRecords(12000)
     .forEach(e => console.log(e.toString()))

@@ -1,7 +1,10 @@
+import { injectable } from "inversify"
 import { Employee } from "../models/employee"
 import { employees } from "../repository/employees"
+import { Manager } from "./abstraction/manager"
 
-export class EmployeeManager {
+@injectable()
+export class EmployeeManager implements Manager<Employee, number> {
     //method to add an employee in the array
     add(e: Employee): void {
         employees.push(e)
@@ -11,7 +14,7 @@ export class EmployeeManager {
         employees.forEach(e => e.calculateSalary())
     }
     //method to filter the employees based on total salary
-    filterBySalary(value: number): Readonly<Employee[]> {
+    filterRecords(value: number): Readonly<Employee[]> {
         return employees
             .filter(e => e.totalSalary > value)
     }

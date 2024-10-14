@@ -1,0 +1,19 @@
+{
+  "name": "js-modules",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "compile:w": "tsc -w",
+    "app": "node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "requirejs": "^2.3.7"
+  }
+}

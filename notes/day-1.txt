@@ -13,3 +13,34 @@ S/W required:
 ----------------------
 Node JS
 VS Code
+
+
+JS engines:
+-------------------
+chrome: v8 
+safari: JS Core (nitro)
+firefox: Spidermonkey
+edge: chromium
+
+JS Execution:
+--------------------
+1. prepration stage
+2. Execution stage
+
+Ryan Dahl => Node JS (a runtime built at the top of V8 JS engine)
+
+ECMA => ECMAScript (ES)
+
+2015 6.0 => let and const keywords
+2024 
+
+
+
+
+
+
+
+
+
+
+

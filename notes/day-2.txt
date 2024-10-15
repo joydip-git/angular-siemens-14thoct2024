@@ -30,11 +30,30 @@ Component:
 
 angular assets:
 -------------------------
-1. component			=> @Component()
+1. component			=> @Component()				@angular/core
 2. directive			=> @Directive()
 3. pipes					=> @Pipe()
 4. service				=> @Injectable()			
 5. module				=> @NgModule()
+
+
+binding:
+-------------------
+a. passing data from code to the view/template: data binding
+i. title="" 			<h2>{{title}}</h2> => interpolation
+	
+ii. [] => property binding
+	width=300			<input type='text' [style.width.px]="width" [value]="title">
+
+b. passing data from view/template to the code
+
+
+
+
+
+
+
+
 
 
 

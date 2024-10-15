@@ -7,3 +7,37 @@
 <!-- 
 Template Reference Variable: 
 var txtTitleRef = document.querySelector('input[type=text]')-->
+
+<br>
+<ol *ngIf="names.length>0">
+  <li *ngFor="let name of names">
+    {{name}}
+  </li>
+</ol>
+<span *ngIf="names.length===0">
+  no names
+</span>
+<br>
+<div *ngIf="people">
+  <table *ngIf="people.length>0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of people">
+        <td>{{p.id}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.salary}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<app-calculator></app-calculator>
+<br>
+<br>
+<app-another></app-another>

@@ -45,7 +45,70 @@ i. title="" 			<h2>{{title}}</h2> => interpolation
 ii. [] => property binding
 	width=300			<input type='text' [style.width.px]="width" [value]="title">
 
-b. passing data from view/template to the code
+b. passing data from view/template to the code: event-binding
+	<button (click)="clicked(100)">Click</button>
+	class SomeComponent{
+		clicked(data:number){
+		}
+	}
+
+
+@Directive({
+	selector:'[ngModel]',
+	...
+})
+export class NgModelDirective{
+	(valueChanged):EventEmitter<any>
+	[value]
+}
+
+[(ngModel)]
+
+@NgModule({
+	declarations:[NgModelDirective],
+	exports:[NgModelDirective]
+})
+export class FormsModule{}
+
+
+@Directive({
+	selector:'[ngFor]',
+	...
+})
+export class NgForDirective{
+	
+}
+
+@NgModule({
+	declarations:[NgForDirective],
+	exports:[NgForDirective]
+})
+export class CommonModule{}
+
+
+@NgModule({
+	imports:[CommonModule],
+	exports:[CommonModule]
+})
+export class BroswerModule{}
+
+
+directives:
+
+a. attribute directive => extends the behavior of an existing element
+	ngModel
+
+b. structural directive => manipulates DOM
+	ngIf, ngFor, ngSwitch etc.
+
+c. component directive (only directive with design)
+
+
+
+
+
+
+
 
 
 

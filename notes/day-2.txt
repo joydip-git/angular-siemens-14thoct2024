@@ -1,0 +1,3 @@
+asynchronity and Promise API
+
+Angular:

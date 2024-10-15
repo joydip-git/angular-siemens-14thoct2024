@@ -4,7 +4,6 @@ import { Developer } from "./models/developer"
 import { Employee } from "./models/employee";
 import { Hr } from "./models/hr"
 import { Manager } from "./services/abstraction/manager";
-import { EmployeeManager } from "./services/employeemanager";
 
 //4. UI logic
 

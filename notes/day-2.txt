@@ -1,3 +1,56 @@
 asynchronity and Promise API
 
 Angular:
+----------------------------------------
+1. Single Page Application
+2. Client-side UI development framework
+3. application is created based on series of components
+4. component is a single unit containing view (design/template) and correspoding code
+5. provides nice syntaxes to pas data to and from view to code easily
+6. powerful DI framework
+7. separation of logic
+8. client-side framework
+9. easy ways to interact with form
+10. nice technique to extend the behavior of existing HTML tags by introducing directives
+
+Angular CLI: (Ng)
+----------------------------------------
+tool to create and manage angular application
+global installation:
+> npm i @angular/cli --location=global
+
+rxjs => Reactive Extensions to JS
+
+Component:
+	a. code (*.ts)		=> header.component.ts
+	b. view (*.html)		=> header.component.html
+	c. style (*.css)		=> header.component.css
+	d. metadata
+
+
+angular assets:
+-------------------------
+1. component			=> @Component()
+2. directive			=> @Directive()
+3. pipes					=> @Pipe()
+4. service				=> @Injectable()			
+5. module				=> @NgModule()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,6 @@ app
 	models
 		product.ts => interface Product
 
-
 	data
 		products.ts => array of Product type objects
 		export const products:Product[] = 

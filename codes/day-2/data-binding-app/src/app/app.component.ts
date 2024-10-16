@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'data-binding-app';
-  names = ['anil', 'sunil', 'vinod']
+  names = []
   people = [{
     id: 1,
     name: 'joydip',

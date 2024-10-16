@@ -99,7 +99,7 @@ a. attribute directive => extends the behavior of an existing element
 	ngModel
 
 b. structural directive => manipulates DOM
-	ngIf, ngFor, ngSwitch etc.
+	ngIf, ngIfElse, ngFor, ngSwitch etc.
 
 c. component directive (only directive with design)
 

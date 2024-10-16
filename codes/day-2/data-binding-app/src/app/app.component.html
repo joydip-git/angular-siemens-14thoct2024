@@ -9,14 +9,24 @@ Template Reference Variable:
 var txtTitleRef = document.querySelector('input[type=text]')-->
 
 <br>
-<ol *ngIf="names.length>0">
+<ol *ngIf="names.length>0;else nonameTemplate">
   <li *ngFor="let name of names">
     {{name}}
   </li>
 </ol>
+<ng-template #nonameTemplate>
+  <span>
+    no names
+  </span>
+</ng-template>
+
+<!--
 <span *ngIf="names.length===0">
-  no names
+    no names
 </span>
+-->
+
+
 <br>
 <div *ngIf="people">
   <table *ngIf="people.length>0">

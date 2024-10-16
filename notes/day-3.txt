@@ -1,0 +1,21 @@
+app
+	app.module.ts
+	app.component.ts
+	app.component.html
+	app.component.css
+
+	other (directory)
+		other.module.ts
+	
+		components (directory)
+			x (directory)
+				x.component.ts
+				x.component.html
+				x.component.css
+
+		directives
+
+		pipes
+
+		services
+	

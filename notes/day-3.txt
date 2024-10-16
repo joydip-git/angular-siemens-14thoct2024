@@ -31,12 +31,13 @@ a. manual
 
 
 b. using ng g command
->ng g p path/x 
+>ng g p products/pipes/product-filter 
+
 1. change the data types of the transform method arguments from "any" to appropriate type
 2. write code for the method
 
 
-<tr *ngFor="let p of (products|sortproduct:choice)|filterproduct:">
+<tr *ngFor="let p of (products|sortproduct:choice)|filterproduct:<value-from-txtbox>">
 </tr>
 
 
@@ -45,6 +46,31 @@ const selectedOption = arr[selectInput.selectedIndex]
 selectedOption.text/value
 
 selectInput.options[selectInput.selectedIndex].value/text
+
+
+passing data between components
+nested components
+----------------------
+1. if shallow nesting
+	i. from nested to parent
+	ii. from parent to nested
+	
+2. if deep nesting
+
+non-nested components
+3. if not nested at all (or routed components)
+
+<app-sort>
+</app-sort>
+
+<app-filter>
+</app-filter>
+
+br
+
+<app-product-list>
+</app-product-list>
+
 
 
 

@@ -9,8 +9,12 @@ import { productRepository } from '../../../data/productrepository';
 export class ProductListComponent {
   products = productRepository
   choice = 'Name'
+  filterText = ''
+
+  updateFilterText(newText: string) {
+    this.filterText = newText
+  }
   updateChoice(newChoice: string) {
-    // console.log(newChoice);
     this.choice = newChoice
   }
 }

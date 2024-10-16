@@ -3,24 +3,32 @@
 </h2>
 <br>
 <div>
-    <label for="ddlChoices">Sort By: &nbsp;</label>
-    <select id="ddlChoices" (change)="updateChoice(selectInput.options[selectInput.selectedIndex].text)" #selectInput>
-        <option selected disabled value="-1">
-            select an option
-        </option>
-        <option value="0">
-            Name
-        </option>
-        <option value="1">
-            Price
-        </option>
-        <option value="2">
-            Id
-        </option>
-        <option value="3">
-            Rating
-        </option>
-    </select>
+    <div style="float: left;">
+        <label for="ddlChoices">Sort By: &nbsp;</label>
+        <select id="ddlChoices" (change)="updateChoice(selectInput.options[selectInput.selectedIndex].text)"
+            #selectInput>
+            <option selected disabled value="-1">
+                select an option
+            </option>
+            <option value="0">
+                Name
+            </option>
+            <option value="1">
+                Price
+            </option>
+            <option value="2">
+                Id
+            </option>
+            <option value="3">
+                Rating
+            </option>
+        </select>
+    </div>
+    <div style="float: right;">
+        <label for="txtFilter">Filter By: &nbsp;</label>
+        <input type="text" id="txtFilter" [value]="filterText" (input)="updateFilterText(filterInput.value)"
+            #filterInput>
+    </div>
 </div>
 <br>
 <table class="table table-hover">
@@ -34,7 +42,7 @@
         </tr>
     </thead>
     <tbody class="table-dark">
-        <tr *ngFor="let p of products|sortproduct:choice">
+        <tr *ngFor="let p of products|sortproduct:choice|filterproduct:filterText">
             <td>
                 <img class="img-style" [src]="p.imageUrl" alt="NA" [title]="p.productName">
             </td>

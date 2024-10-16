@@ -2,6 +2,27 @@
     List of Products
 </h2>
 <br>
+<div>
+    <label for="ddlChoices">Sort By: &nbsp;</label>
+    <select id="ddlChoices" (change)="updateChoice(selectInput.options[selectInput.selectedIndex].text)" #selectInput>
+        <option selected disabled value="-1">
+            select an option
+        </option>
+        <option value="0">
+            Name
+        </option>
+        <option value="1">
+            Price
+        </option>
+        <option value="2">
+            Id
+        </option>
+        <option value="3">
+            Rating
+        </option>
+    </select>
+</div>
+<br>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -13,12 +34,12 @@
         </tr>
     </thead>
     <tbody class="table-dark">
-        <tr *ngFor="let p of products">
+        <tr *ngFor="let p of products|sortproduct:choice">
             <td>
                 <img class="img-style" [src]="p.imageUrl" alt="NA" [title]="p.productName">
             </td>
-            <td>{{p.productName}}</td>
-            <td>{{p.price}}</td>
+            <td>{{p.productName|uppercase}}</td>
+            <td>{{p.price|currency:'INR'}}</td>
             <td>{{p.starRating}}</td>
             <td>
                 <button class="btn btn-danger btn-style" type="button">Delete</button>

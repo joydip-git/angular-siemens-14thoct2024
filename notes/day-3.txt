@@ -1,30 +1,53 @@
-app
-	app.module.ts
-	app.component.ts
-	app.component.html
-	app.component.css
-
-	models
-		product.ts => interface Product
+pipe
 
 
-	data
-		products.ts => array of Product type objects
-		export const products:Product[] = 
+@Pipe({
+	name:'productsort'
+})
+class ProductSortPipe implements PipeTransform{
+	transform(data:Product[],...args:string[]):Product[]{
+		return data
+	}
+}
 
-	products (directory)
-		products.module.ts
-	
-		components (directory)
-			product-list (directory) => ProductList => displays the products through a table element (image, name, price, rating, delete)
-				product-list.component.ts
-				product-list.component.html
-				product-list.component.css
-				product-list.component.spec.ts
 
-		directives
 
-		pipes
+template:
 
-		services
+{{ data | uppercase }}
+{{ (price | currency :'USD':'0-2')|uppercase }}
+
+=> new CurrencyPipe().transform(price,'USD','0-2')
+
+a. manual
+1. create a pipe file => x.pipe.ts
+2. create a class => XPipe
+3. use @Pipe() decorator (from @angular/core)
+	assign pipe name through "name" property 
+4. implement the interface PipeTransform (from @angular/core)in the class 
+5. change the data types of the transform method arguments from "any" to appropriate type
+6. write code for the method
+7. register the pipe with module
+
+
+b. using ng g command
+>ng g p path/x 
+1. change the data types of the transform method arguments from "any" to appropriate type
+2. write code for the method
+
+
+<tr *ngFor="let p of (products|sortproduct:choice)|filterproduct:">
+</tr>
+
+
+const arr = selectInput.options
+const selectedOption = arr[selectInput.selectedIndex]
+selectedOption.text/value
+
+selectInput.options[selectInput.selectedIndex].value/text
+
+
+
+
+
 	

@@ -10,7 +10,7 @@ import { DataService } from '../services/data.service';
 export class AnotherComponent {
     title = 'Another: '
     constructor(private svc: DataService) {
-        this.title += this.svc.getTitle()
+        this.title += this.svc.getServiceData()
         console.log('Another component created');
     }
 }

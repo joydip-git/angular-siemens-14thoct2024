@@ -9,12 +9,8 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent {
   title = '';
-
-  //svc = new DataService()
-
   constructor(private svc: DataService) {
-    // this.svc = new DataService()    
-    this.title = this.svc.getTitle()
+    this.title = this.svc.getServiceData()
     console.log('App component created');
   }
 }

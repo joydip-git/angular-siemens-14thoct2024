@@ -22,11 +22,11 @@ export class SomeService{
 
 2. register service: (for DI of the service)
 -------------------------------------------------
-a. is just an asset (such as, a component) needs DI?
+a. asset level: is just an asset (such as, a component) needs DI?
 Register at the asset level ONLY. 
 Angular creates a single instance to be used ONLY by that asset. No one else can share that instance.
 
-b. is the instance of service going to be used by multiple assets of a feature module? 
+b. feature module level: is the instance of service going to be used by multiple assets of a feature module? 
 Regsiter at the feature module level. 
 Angular will create a single instance of the service and any asset of this feature module ONLY can share that instance of the service. No other module can share that instance.
 
@@ -39,7 +39,7 @@ app.module.ts
 
 	app-common.module.ts
 
-c. is the instance of service going to be used by multiple assets in the entire application acrosss multiple feature modules? 
+c. application level: is the instance of service going to be used by multiple assets in the entire application acrosss multiple feature modules? 
 Regsiter at the root module level. 
 Angular will create a single instance of the service for entire application and any asset of multiple feature modules can share that instance of the service.
 
@@ -56,6 +56,44 @@ app.module.ts
 error:
 NullInjectorError: R3InjectorError(_AppModule)[DataService -> DataService]: 
   NullInjectorError: No provider for DataService!
+
+
+provider => is the one who provides (suuplies) information (metadata) about a service to angular DI framework and based on that an instance of the service is created, which then is injected in the dependent party (e.g. component) by Angular "Injector"
+
+a type with following properties
+	a. provide
+	b. useValue
+	c. useClass
+	d. useExisting
+	e. useFactory
+	.....
+
+Angular maintains separate injectors for different level - 
+	asset level, 
+	feature module and 
+	application level
+	
+
+@Injectable() 
+what it is? 
+=> Decorator that marks a class as available to be provided and injected as a dependency.
+
+Marking a class with @Injectable ensures that the compiler will generate the necessary metadata to create the class's dependencies when the class is injected.
+
+the @Injectable() tells angular to find out and extract metadata about the dependencies of the current class (on which @Injectable() has been used) and create instance(s) of the dependency(cies) first, inject them in the current class constructor and then create the instance of the current class
+
+according to this, any class (no matter whether it is a component, directive, pipe, service, module etc.) who has dependencies MUST be declared with @Injectable() decorator.
+
+In case of component, directive, pipe and module, coincidentally, you use @Component(), @Directive(), @Pipe() and @NgModule() decorators and all of those decoartors do automatically implement @Injectable()
+
+But @Injectable() is explicitly needs to be declared at the top of the service class, since no explicit decorator is used at the top of service classs
+
+
+
+
+ [ERROR] TS-992005: The class 'DataService' cannot be created via dependency injection, as it does not have an Angular decorator. This will result in an error at runtime.
+
+Either add the @Injectable() decorator to 'DataService', or configure a different provider (such as a provider with 'useFactory').
 
 
 

@@ -1,0 +1,67 @@
+service:
+	a class with methods containing reusable piece of logic, common sharable data etc.
+
+product-list.component.html
+{{p.productName|uppercase}}
+
+customer.component.html
+{{c.customerName|uppercase}}
+
+1. create service:
+--------------------------------------
+file=>some.service.ts
+
+export class SomeService{
+	getData():string{
+		return 'data';
+	}
+}
+
+
+>ng g s <path>/<service-name>
+
+2. register service: (for DI of the service)
+-------------------------------------------------
+a. is just an asset (such as, a component) needs DI?
+Register at the asset level ONLY. 
+Angular creates a single instance to be used ONLY by that asset. No one else can share that instance.
+
+b. is the instance of service going to be used by multiple assets of a feature module? 
+Regsiter at the feature module level. 
+Angular will create a single instance of the service and any asset of this feature module ONLY can share that instance of the service. No other module can share that instance.
+
+app.module.ts
+
+	products.module.ts  
+			@NgModule({ providers:[DataService], imports:[], declarations:[],})
+		pipes
+		components		
+
+	app-common.module.ts
+
+c. is the instance of service going to be used by multiple assets in the entire application acrosss multiple feature modules? 
+Regsiter at the root module level. 
+Angular will create a single instance of the service for entire application and any asset of multiple feature modules can share that instance of the service.
+
+app.module.ts
+	@NgModule({ providers:[DataService], imports:[], declarations:[],})
+
+	products.module.ts  			
+		pipes
+		components		
+
+	app-common.module.ts
+		components
+
+error:
+NullInjectorError: R3InjectorError(_AppModule)[DataService -> DataService]: 
+  NullInjectorError: No provider for DataService!
+
+
+
+
+
+
+
+
+

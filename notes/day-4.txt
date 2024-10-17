@@ -1,16 +1,13 @@
 service:
 	a class with methods containing reusable piece of logic, common sharable data etc.
 
-product-list.component.html
-{{p.productName|uppercase}}
-
-customer.component.html
-{{c.customerName|uppercase}}
-
 1. create service:
 --------------------------------------
 file=>some.service.ts
 
+@Injectable({
+	providedIn:'root'
+})
 export class SomeService{
 	getData():string{
 		return 'data';
@@ -53,20 +50,48 @@ app.module.ts
 	app-common.module.ts
 		components
 
-error:
-NullInjectorError: R3InjectorError(_AppModule)[DataService -> DataService]: 
-  NullInjectorError: No provider for DataService!
-
-
 provider => is the one who provides (suuplies) information (metadata) about a service to angular DI framework and based on that an instance of the service is created, which then is injected in the dependent party (e.g. component) by Angular "Injector"
 
 a type with following properties
-	a. provide
+	a. provide (assign token value to it)
 	b. useValue
 	c. useClass
 	d. useExisting
 	e. useFactory
 	.....
+
+provider => 
+	token:a value (string/class) 
+	service: service related to that token
+
+token (DataService) => sevice class (DataService)
+
+prvider configuration =>
+------------------------------------
+providers:[
+	{
+      provide: 'DATA_SERVICE',
+      useClass: DataService
+	},
+	TitleService => {provide: TitleService, useClass:TitleService }
+]
+
+service consumption/DI:
+-----------------------------------
+constructor(@Inject('DATA_SERVICE') svc: DataService)
+
+=> @Inject('DATA_SERVICE') tells angular to look for a provider token, by the name 'DATA_SERVICE' and create an object of the service class linked with that token and then inject (pass/assign) the reference of the service class object to the constructor argument "svc"
+
+Note: @Inject() decorator is used with constructor parameter, NOT with data member of the class
+
+constructor(private titleSvc: TitleService)
+=> tells angular to look for a provider token, by the name TitleService itself and create an object of the service class linked with that token and then inject (pass/assign) the reference of the service class object to the constructor argument "titleSvc"
+
+role of interface:
+constructor(@Inject('DATA_SERVICE') private svc: ServiceContract)
+=> tells angular to look for a provider token, by the name 'DATA_SERVICE' and create an object of the service class (which implements ServiceContract interface) linked with that token and then inject (pass/assign) the reference of the service class object to the constructor argument "svc".
+
+
 
 Angular maintains separate injectors for different level - 
 	asset level, 
@@ -90,9 +115,16 @@ But @Injectable() is explicitly needs to be declared at the top of the service c
 
 best practice: to maintain uniformity, always decorate service with @Injectable
 
-[ERROR] TS-992005: The class 'DataService' cannot be created via dependency injection, as it does not have an Angular decorator. This will result in an error at runtime.
+errors:
+you forgot to register the service =>
+NullInjectorError: R3InjectorError(_AppModule)[DataService -> DataService]: 
+  NullInjectorError: No provider for DataService!
 
+you forgot to use @Injectable() with service class, which has other dependencies =>
+
+[ERROR] TS-992005: The class 'DataService' cannot be created via dependency injection, as it does not have an Angular decorator. This will result in an error at runtime.
 Either add the @Injectable() decorator to 'DataService', or configure a different provider (such as a provider with 'useFactory').
+
 
 
 

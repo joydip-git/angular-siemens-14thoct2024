@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { DataService } from './services/data.service';
+import { Component, Inject } from '@angular/core';
+import { ServiceContract } from './services/servicecontract';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,12 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent {
   title = '';
-  constructor(private svc: DataService) {
+
+  //private svc: DataService;
+  //constructor(@Inject('DATA_SERVICE') svc: ServiceContract) {
+  //this.svc = svc;
+  //}
+  constructor(@Inject('DATA_SERVICE') private svc: ServiceContract) {
     this.title = this.svc.getServiceData()
     console.log('App component created');
   }

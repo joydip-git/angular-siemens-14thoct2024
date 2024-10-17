@@ -43,6 +43,25 @@ app
 		directives
 
 		pipes
+			product-filter.pipe.ts
+			product-sort.pipe.ts
 
 		services
+			product.service.ts => ProductService 
+
+			methods: getProducts, return an array of product objects 
+			Note: create an interface with methods and implement that interface in the ProductService class
+
+			Registration: It will be registered with ProductsModule, with a custom provider configuration, i.e., use a string as a token to represent the service class)
+			
+			consumption: ProductList component will consume this servivce (currently)
+and will call the getProducts() method to get the array (productRepository) and will assign that array to "products" property
+			
+
+
+
+
+
+
+
 	

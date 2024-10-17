@@ -1,4 +1,5 @@
 service:
+----------------------------------------------------
 	a class with methods containing reusable piece of logic, common sharable data etc.
 
 Part-1:
@@ -130,6 +131,16 @@ you forgot to use @Injectable() with service class, which has other dependencies
 
 [ERROR] TS-992005: The class 'DataService' cannot be created via dependency injection, as it does not have an Angular decorator. This will result in an error at runtime.
 Either add the @Injectable() decorator to 'DataService', or configure a different provider (such as a provider with 'useFactory').
+
+
+Lifecycle of components:
+---------------------------------
+
+
+
+
+HTTP requests:
+---------------------------------------
 
 
 

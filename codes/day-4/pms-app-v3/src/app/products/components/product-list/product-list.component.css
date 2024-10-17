@@ -1,0 +1,15 @@
+/* CSS class selector */
+.img-style {
+    margin: 2px;
+    width: 80px;
+}
+
+.btn-style {
+    border-radius: 5px;
+}
+
+/* CSS element selector */
+/* image, button {
+    margin: 2px;
+    width: 80px;
+} */

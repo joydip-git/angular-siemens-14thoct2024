@@ -1,0 +1,13 @@
+<div>
+    <div id="divSort">
+        <app-product-sorting (choiceChanged)="updateChoiceHandler($event)"></app-product-sorting>
+    </div>
+    <div id="divFilter">
+        <app-product-filtration (filtrationValueChanged)="updateFilterTextHandler($event)"></app-product-filtration>
+    </div>
+</div>
+<br>
+<br>
+<div>
+    <app-product-list [choice]="sortChoice" [filterText]="filtrationValue"></app-product-list>
+</div>

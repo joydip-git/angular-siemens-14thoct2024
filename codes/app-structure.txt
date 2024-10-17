@@ -1,25 +1,44 @@
 app
 	app.module.ts
 	app.component.ts
-	app.component.html
+	app.component.html (<app-product-container></app-product-container>)
 	app.component.css
 
 	models
 		product.ts => interface Product
 
 	data
-		products.ts => array of Product type objects
-		export const products:Product[] = 
+		productrepositor.ts => array of Product type objects
+		export const productRepository:Product[] = []
 
 	products (directory)
 		products.module.ts
 	
-		components (directory)
+		components (directory)		
+
+			product-container => will nest product-list, product-sorting, product-filtration components
+				product-container.component.ts
+				product-container.component.html
+				product-container.component.css
+				product-container.component.spec.ts
+
 			product-list (directory) => ProductList => displays the products through a table element (image, name, price, rating, delete)
 				product-list.component.ts
 				product-list.component.html
 				product-list.component.css
 				product-list.component.spec.ts
+
+			product-filtration
+				product-filtration.component.ts
+				product-filtration.component.html
+				product-filtration.component.css
+				product-filtration.component.spec.ts
+
+			product-sorting
+				product-sorting.component.ts
+				product-sorting.component.html
+				product-sorting.component.css
+				product-sorting.component.spec.ts
 
 		directives
 

@@ -52,8 +52,19 @@ passing data between components
 nested components
 ----------------------
 1. if shallow nesting
-	i. from nested to parent
+	i. from nested to parent: use event binding mechanism
+		a. create an event property in nested component (by assigning the property to an instance of EventEmitter<T>
+		b. decorate the property with @Output() decorator from @angular/core package
+		c. now, fire the event at an appropriate time
+		d. let, parent component assign an event handler method to the event of the nested component
+		e. the value emitted by nested component can be passed to the parent's event handler by using "$event" argument
+
 	ii. from parent to nested
+		a. create a property in the nested to accept data from parent
+		b. decorate the property with @Input() decorator
+		c. let the parent component bind data to the property/attribute of the nested component
+
+Note: if you want to create an alias for an event property of inout property, you can do that by passing an alias name to the @Output('alias') and @Input('alias') decorator function
 	
 2. if deep nesting
 

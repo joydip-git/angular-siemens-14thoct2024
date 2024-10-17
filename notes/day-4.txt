@@ -135,12 +135,77 @@ Either add the @Injectable() decorator to 'DataService', or configure a differen
 
 Lifecycle of components:
 ---------------------------------
+	//one time data fetching
+	ngOnInit (){
+		this.ps.getAll()
+	}
 
+	productdetail => details of a product
+	productId => send request to backend with that productId every time and fetch different product details every time
 
+	//repeated data fetching in nested component
+	ngOnChanges(){
+		this.ps.get(productId)
+	}
+
+	creation phase:
+	a. constructor() => initialize all the properties of the class with default or some static data. DO NOT initialize properties of the class with any asynchronously fetched data (sending request to backend API server, or from file, or by sending request through websocket) in the constructor
+
+	b.	changes => a nested component recevies data from its parent using @Input() properties, immediately after constructor execution and that's when this event gets fired. gets fired every time the nested gets updated data from parent via @Input() properties.
+
+	c. init => this event gets fired immediately after the change event. this event gets fired ONLY ONE TIME during the lifecycle of the component (till the destruction)
+
+	update phase:
+	a. changes:if the data in the parent is updated and again that fresh data in received via @Input() propery by nested, immediately the change event will take place again
+
+	destruction phase
+	a. destroy
+
+to write code while those events take place, you have to write specific event handlers in the component class code. those specific event handlers are known as 'hooks'. These are the following hooks
+
+event name				interface name			method/hook name
+----------------------------------------------------------
+	X							OnX							ngOnX
+
+	changes					OnChanges					ngOnChanges
+	init						OnInit						ngOnInit
+	destroy					OnDestroy					ngOnDestroy
 
 
 HTTP requests:
 ---------------------------------------
+built-in service class: HttpClient
+built-in module: HttpClientModule (deprecated)
+use provideHttpClient() method instead
+
+provideHttpClient() => Configures Angular's HttpClient service to be available for injection. By default, HttpClient will be configured for injection with its default options for XSRF protection of outgoing requests
+
+providers: [
+    provideHttpClient(),
+    {
+      provide: 'POST_SERVICE_TOKEN',
+      useClass: PostService
+    }
+  ]
+
+
+
+HttpClient class methods:
+a. fetch record(s): get() => send HTTP request with 'GET' method
+Constructs a GET request that interprets the body as JSON and returns the response body as an object parsed from JSON.
+
+a. insert new record: post() => send HTTP request with 'POST' method
+a. update existing record: put() => send HTTP request with 'PUT' method
+a. delete existing record: delete() => send HTTP request with 'DELETE' method
+
+
+all methods are asynchronous and returns "Observable" object (quite similar to Promise)
+
+Observable object is supplied by 'rxjs' package
+in order to receive data in component or anywhere else, subscribe to the observable, so when the observable receives data, the component will also receive data
+
+to subscribe to an observable, you need to call the subscribe() and pass an object with maximum three callbacks. this object is known as observer object. the job of observer is to observe the subscribed observable.
+Note: complete callback nevers gets invoked when error happens. 
 
 
 

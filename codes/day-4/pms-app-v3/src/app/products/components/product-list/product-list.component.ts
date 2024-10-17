@@ -14,6 +14,8 @@ export class ProductListComponent {
   @Input() filterText = ''
 
   constructor(@Inject(APP_CONSTANTS.PRODUCT_SERVICE_TOKEN) private ps: ServiceContract<Product>) {
-    this.products = this.ps.getAll()
+    //side-effect causing code
+    //this.products = this.ps.getAll()
+    this.products = []
   }
 }

@@ -1,6 +1,8 @@
 service:
 	a class with methods containing reusable piece of logic, common sharable data etc.
 
+Part-1:
+
 1. create service:
 --------------------------------------
 file=>some.service.ts
@@ -50,7 +52,15 @@ app.module.ts
 	app-common.module.ts
 		components
 
+Part-2:
+-----------------------------
 provider => is the one who provides (suuplies) information (metadata) about a service to angular DI framework and based on that an instance of the service is created, which then is injected in the dependent party (e.g. component) by Angular "Injector"
+
+Injector: Angular maintains separate injectors for different level - 
+	asset level, 
+	feature module and 
+	application level
+
 
 a type with following properties
 	a. provide (assign token value to it)
@@ -76,6 +86,7 @@ providers:[
 	TitleService => {provide: TitleService, useClass:TitleService }
 ]
 
+
 service consumption/DI:
 -----------------------------------
 constructor(@Inject('DATA_SERVICE') svc: DataService)
@@ -91,14 +102,9 @@ role of interface:
 constructor(@Inject('DATA_SERVICE') private svc: ServiceContract)
 => tells angular to look for a provider token, by the name 'DATA_SERVICE' and create an object of the service class (which implements ServiceContract interface) linked with that token and then inject (pass/assign) the reference of the service class object to the constructor argument "svc".
 
-
-
-Angular maintains separate injectors for different level - 
-	asset level, 
-	feature module and 
-	application level
 	
-
+Part-3:
+-----------------------
 @Injectable() 
 what it is? 
 => Decorator that marks a class as available to be provided and injected as a dependency.

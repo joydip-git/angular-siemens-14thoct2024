@@ -15,6 +15,11 @@ import { TitleService } from './services/title.service';
     BrowserModule
   ],
   providers: [DataService, TitleService],
+
+  //if you have used
+  //{providedIn:'root'} while defining DataService, then no need to again register the DataService
+  //providers: [TitleService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

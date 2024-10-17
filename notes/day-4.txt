@@ -88,10 +88,9 @@ In case of component, directive, pipe and module, coincidentally, you use @Compo
 
 But @Injectable() is explicitly needs to be declared at the top of the service class, since no explicit decorator is used at the top of service classs
 
+best practice: to maintain uniformity, always decorate service with @Injectable
 
-
-
- [ERROR] TS-992005: The class 'DataService' cannot be created via dependency injection, as it does not have an Angular decorator. This will result in an error at runtime.
+[ERROR] TS-992005: The class 'DataService' cannot be created via dependency injection, as it does not have an Angular decorator. This will result in an error at runtime.
 
 Either add the @Injectable() decorator to 'DataService', or configure a different provider (such as a provider with 'useFactory').
 

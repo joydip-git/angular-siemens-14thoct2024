@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 
 import { TitleService } from "./title.service";
 
+// @Injectable({
+//     providedIn: 'root'
+// })
 @Injectable()
 export class DataService {
     constructor(private titleSvc: TitleService) {

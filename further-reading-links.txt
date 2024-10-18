@@ -1,0 +1,7 @@
+use web view2:
+https://learn.microsoft.com/en-us/microsoft-edge/webview2/
+https://learn.microsoft.com/en-us/microsoft-edge/webview2/get-started/get-started
+https://learn.microsoft.com/en-us/microsoft-edge/webview2/get-started/wpf
+
+Unit testing:
+https://angular.dev/guide/testing

@@ -1,0 +1,20 @@
+<div *ngIf="fetchComplete;else fetchTemplate">
+    <div *ngIf="errorInfo==='';else errorTemplate">
+        <div *ngIf="posts && posts.length>0;else norecordTemplate">
+            <ol>
+                <li *ngFor="let p of posts">
+                    {{p.title}}
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<ng-template #fetchTemplate>
+    <span>Loading...</span>
+</ng-template>
+<ng-template #errorTemplate>
+    <span>{{errorInfo}}</span>
+</ng-template>
+<ng-template #norecordTemplate>
+    <span>No Posts...</span>
+</ng-template>

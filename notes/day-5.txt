@@ -62,6 +62,66 @@ possible responses:
 { "message":"<success/failure message>", "data":array-of-products|single-product|null }
 
 
+packages:
+---------------------------------
+@angular/core => decrators (@Component, ...), interfaces (OnInit, PipeTransform)
+@angular/common => majority of structural directives 
+@angular/common/http => HttpClient, provideHttpClient()
+@angular/forms => FormsModule, ngModel
+@angular/platform-browser => BroswerModule
+@angular/platform-browser-dynamic => platfromBrowserDynamic() => creates Platform for angular app
+@angular/router => 
+
+rxjs => Observbale, Subscription etc.
+
+
+
+Routing:
+-------------------------------------------------
+Angular provides you client-side routing facility
+
+package: @angular/router
+module: RouterModule
+
+built-in types:
+--------------------------
+Route => 
+	const pccRoute = {path:'products', component:ProductContainerComponent}
+	const apcRoute = {path:'products/add', component:AddProductComponent}
+Routes => Route[]
+
+	const routes:Route[] = [pccRoute, apcRoute]
+
+some module file and register the routes variable 
+
+imports:[ RouterModule.forChild/forRoot(routeArray)]
+
+built-in components:
+------------------------------
+<router-outlet></...>
+
+where to do the routing configuration???
+------------------------------------------------------
+A. if you have feature modules in your application and you want to create routes for different components of those different feature modules, then create routing configuration in individual feature module file
+
+B. if you DO NOT have feature modules in your application, then create routes in roo t module file
+
+create routing configuration in the feature (A) or root (B) module file directly
+register the routes with RouterModule.forRoot/forChild() in the module file
+
+or
+
+create separate module file for routing (module-name-routing.module.ts)
+register the routes with RouterModule.forRoot/forChild() in the module file
+regsiter that small routing module file with feature/root module file (module-name.module.ts) in the imports:[] array
+
+products/categories/mobile/samsung/1
+products/categories/mobile/samsung/2
+
+products/categories/mobile/iphone/12
+
+
+
 
 
 

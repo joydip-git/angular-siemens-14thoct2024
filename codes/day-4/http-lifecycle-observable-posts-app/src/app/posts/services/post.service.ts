@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post';
+import { PostServiceContract } from './postservicecontract';
 
 @Injectable()
-export class PostService {
+export class PostService implements PostServiceContract {
   private postUrl = 'https://jsonplaceholder.typicode.com/posts'
 
   constructor(private http: HttpClient) {

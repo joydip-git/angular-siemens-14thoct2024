@@ -18,6 +18,7 @@ import { provideHttpClient } from '@angular/common/http';
       provide: 'POST_SERVICE_TOKEN',
       useClass: PostService
     }
-  ]
+  ],
+  exports: [PostListComponent]
 })
 export class PostsModule { }

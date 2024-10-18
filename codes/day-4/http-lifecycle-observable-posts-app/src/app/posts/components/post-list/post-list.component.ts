@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { PostService } from '../../services/post.service';
 import { Post } from '../../../models/post';
 import { Subscription } from 'rxjs';
+import { PostServiceContract } from '../../services/postservicecontract';
 
 @Component({
   selector: 'app-post-list',
@@ -15,7 +15,7 @@ export class PostListComponent implements OnInit, OnDestroy {
   fetchComplete = false
   private postsSub?: Subscription;
 
-  constructor(@Inject('POST_SERVICE_TOKEN') private ps: PostService) {
+  constructor(@Inject('POST_SERVICE_TOKEN') private ps: PostServiceContract) {
 
   }
 

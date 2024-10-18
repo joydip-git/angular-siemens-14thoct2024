@@ -49,7 +49,10 @@ app
 		services
 			product.service.ts => ProductService 
 
-			methods: getProducts, return an array of product objects 
+			this class methods will send requests to backend server application for product records, using HttpClient and will return the data to components
+
+			methods: 
+			a. getProducts => returns an observable containing response (message and array of product objects) from backend server  
 			Note: create an interface with methods and implement that interface in the ProductService class
 
 			Registration: It will be registered with ProductsModule, with a custom provider configuration, i.e., use a string as a token to represent the service class)

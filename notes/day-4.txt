@@ -124,6 +124,7 @@ best practice: to maintain uniformity, always decorate service with @Injectable
 
 errors:
 you forgot to register the service =>
+
 NullInjectorError: R3InjectorError(_AppModule)[DataService -> DataService]: 
   NullInjectorError: No provider for DataService!
 

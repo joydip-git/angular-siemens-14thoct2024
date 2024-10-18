@@ -1,0 +1,67 @@
+product-service-backend response:
+
+get all products
+----------------------------------------------------------------
+url: http://localhost:3003/products      
+HTTP Method: GET
+Request data: NA
+Response: { "message":"records found", "data":[{},{},{},...] }
+
+
+get a product
+----------------------------------------------------------------
+url: http://localhost:3003/products/<id-of-product>      
+HTTP Method: GET
+Request data: id-of-product
+Response: { "message":"record found", "data":{} }
+
+error: incorrect id of product
+Response: { "message":"no record found", "data":null }
+
+
+add a product
+----------------------------------------------------------------
+url: http://localhost:3003/products      
+HTTP Method: POST
+Request data: product object (as part of request body)
+Response: { "message":"product added", "data":[{},{},...] }
+
+error: product already exists
+Response: { "message":"could not add", "data":null }
+
+
+update a product
+----------------------------------------------------------------
+url: http://localhost:3003/products/<id-of-product-to-update>      
+HTTP Method: PUT
+Request data: 
+	1. updated product object (as part of request body)
+	2. id-of-product-to-update (as part of the URL)
+
+Response: { "message":"product updated", "data":[{},{},...] }
+
+error: product doesn't exist (incorrect product id)
+Response: { "message":"could not update", "data":null }
+
+
+delete a product
+----------------------------------------------------------------
+url: http://localhost:3003/products/<id-of-product-to-delete>      
+HTTP Method: DELETE
+Request data: 
+	1. id-of-product-to-delete (as part of the URL)
+
+Response: { "message":"product deleted", "data":[{},{},...] }
+
+error: product doesn't exist (incorrect product id)
+Response: { "message":"could not delete", "data":null }
+
+
+possible responses:
+
+{ "message":"<success/failure message>", "data":array-of-products|single-product|null }
+
+
+
+
+

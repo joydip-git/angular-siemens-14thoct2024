@@ -137,7 +137,7 @@ Either add the @Injectable() decorator to 'DataService', or configure a differen
 Lifecycle of components:
 ---------------------------------
 	//one time data fetching
-	ngOnInit (){
+	ngOnInit(){
 		this.ps.getAll()
 	}
 

@@ -1,26 +1,28 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { PostServiceContract } from '../../services/postservicecontract';
 import { Subscription } from 'rxjs';
 import { Post } from '../../../models/post';
 
 @Component({
-  selector: 'app-update-post',
-  templateUrl: './update-post.component.html',
-  styleUrl: './update-post.component.css'
+  selector: 'app-view-post',
+  templateUrl: './view-post.component.html',
+  styleUrl: './view-post.component.css'
 })
-export class UpdatePostComponent implements OnInit {
+export class ViewPostComponent implements OnInit, OnDestroy {
   private getSub?: Subscription;
   errorInfo = ''
   fetchComplete = false
   post?: Post;
 
-
   constructor(
     private currentRoute: ActivatedRoute,
+    private router: Router,
     @Inject('POST_SERVICE_TOKEN')
     private ps: PostServiceContract
-  ) { }
+  ) {
+    console.log('view post....');
+  }
   ngOnInit(): void {
     const snapshot: ActivatedRouteSnapshot = this.currentRoute.snapshot
     const id = Number(snapshot.params['id'])
@@ -39,5 +41,12 @@ export class UpdatePostComponent implements OnInit {
             this.fetchComplete = true
           }
         })
+  }
+  ngOnDestroy(): void {
+    console.log('view post finalize');
+    this.getSub?.unsubscribe()
+  }
+  navigateTo(id: number) {
+    this.router.navigate(['/posts', 'update', id])
   }
 }

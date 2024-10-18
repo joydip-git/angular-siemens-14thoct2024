@@ -6,12 +6,14 @@ import { provideHttpClient } from '@angular/common/http';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { UpdatePostComponent } from './components/update-post/update-post.component';
 import { PostsRoutingModule } from './posts-routing.module';
+import { ViewPostComponent } from './components/view-post/view-post.component';
 
 @NgModule({
   declarations: [
     PostListComponent,
     AddPostComponent,
-    UpdatePostComponent
+    UpdatePostComponent,
+    ViewPostComponent
   ],
   imports: [
     CommonModule,

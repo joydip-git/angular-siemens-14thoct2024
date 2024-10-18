@@ -88,38 +88,62 @@ built-in types:
 Route => 
 	const pccRoute = {path:'products', component:ProductContainerComponent}
 	const apcRoute = {path:'products/add', component:AddProductComponent}
-Routes => Route[]
+
 
 	const routes:Route[] = [pccRoute, apcRoute]
+	or
+	const routes:Routes = [pccRoute, apcRoute] (Routes => Route[])
 
-some module file and register the routes variable 
+	register the routes variable with RouterModule
+	imports:[ RouterModule.forChild/forRoot(routeArray)]
 
-imports:[ RouterModule.forChild/forRoot(routeArray)]
+ActivatedRouteSnapshot => represents current state of the activated route
 
 built-in components:
 ------------------------------
-<router-outlet></...>
+<router-outlet></...> => outlet for the router to render the component dynamically based on route
+
+this should be in a bootstrapper component or some other component which is nested in the bootstrapper component
 
 where to do the routing configuration???
 ------------------------------------------------------
 A. if you have feature modules in your application and you want to create routes for different components of those different feature modules, then create routing configuration in individual feature module file
 
-B. if you DO NOT have feature modules in your application, then create routes in roo t module file
+B. if you DO NOT have feature modules in your application, then create routes in root module file
 
 create routing configuration in the feature (A) or root (B) module file directly
-register the routes with RouterModule.forRoot/forChild() in the module file
-
+register the routes with RouterModule.forRoot/forChild() in the module file => 
+imports:[ RouterModule.forChild/forRoot(routeArray)]
 or
 
 create separate module file for routing (module-name-routing.module.ts)
-register the routes with RouterModule.forRoot/forChild() in the module file
-regsiter that small routing module file with feature/root module file (module-name.module.ts) in the imports:[] array
+register the routes with RouterModule.forRoot/forChild() in the module file =>
+imports:[ RouterModule.forChild/forRoot(routeArray)]
 
-products/categories/mobile/samsung/1
-products/categories/mobile/samsung/2
+regsiter that small routing module file with feature/root module file (module-name.module.ts) in the imports array => imports:[SampleRoutingModule]
 
-products/categories/mobile/iphone/12
 
+built-in directives:
+-------------------------------
+routerLink => attribute directive, used like an attribute.
+helps you navigate to a view, without reloading the application. additionally, when used as an attribute of <a> or <input type='submit'>, it suppresses the default behavior of them, which is to submit the view back to the server. (suppresses server side routing)
+
+//passing an array of strings containing path fragments
+routerLink="['posts','add']" => "http://localhost:4200/posts/add"
+
+//passing a complee path as string
+routerLink="/home"					=> "http://localhost:4200/home"
+
+data-binding to a component property (id)
+[routerLink]="['posts','update',id]" => "http://localhost:4200/posts/update/1"
+
+built-in services:
+--------------------------
+1. ActivatedRoute => represents the complete information about the current route that is "activated" (being navigated), such as- which component is present in outlet, any data has been passed as route parameter or query string etc. 
+
+2. RouterState => state of router. consists of a tree of ActivatedRoute objects.
+
+3. Router => represents the router itself
 
 
 

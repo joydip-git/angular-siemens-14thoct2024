@@ -1,1 +1,51 @@
-<p>update-post works!</p>
+<ng-template #fetchTemplate>
+    <span>Loading...</span>
+</ng-template>
+<ng-template #errorTemplate>
+    <span>{{errorInfo}}</span>
+</ng-template>
+<ng-template #norecordTemplate>
+    <span>No Post found...</span>
+</ng-template>
+<div *ngIf="fetchComplete;else fetchTemplate">
+    <div *ngIf="errorInfo==='';else errorTemplate">
+        <table *ngIf="post;else norecordTemplate">
+            <tr>
+                <td>
+                    <label for="txtId">Id: &nbsp;</label>
+                </td>
+                <td>
+                    <input type="text" readonly id="txtId" [value]="post.id">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="txtUserId">User Id: &nbsp;</label>
+                </td>
+                <td>
+                    <input type="text" id="txtUserId" [value]="post.userId">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="txtTitle">Title: &nbsp;</label>
+                </td>
+                <td>
+                    <input type="text" id="txtTitle" [value]="post.title">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="txtBody">Body: &nbsp;</label>
+                </td>
+                <td>
+                    <textarea id="txtBody" cols="50" rows="10">
+                        {{post.body}}
+                    </textarea>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button type="button">Update</button>
+    </div>
+</div>

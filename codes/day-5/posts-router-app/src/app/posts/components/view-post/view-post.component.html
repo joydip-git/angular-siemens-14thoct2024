@@ -1,0 +1,30 @@
+<ng-template #fetchTemplate>
+    <span>Loading...</span>
+</ng-template>
+<ng-template #errorTemplate>
+    <span>{{errorInfo}}</span>
+</ng-template>
+<ng-template #norecordTemplate>
+    <span>No Post found...</span>
+</ng-template>
+<div *ngIf="fetchComplete;else fetchTemplate">
+    <div *ngIf="errorInfo==='';else errorTemplate">
+        <div *ngIf="post;else norecordTemplate">
+            <div class="card" style="width: 60rem;">
+                <h3>Title:<br> {{post.title}}</h3>
+                <div class="card-body">
+                    <h4>Created By: {{post.userId}}</h4>
+                    <p class="card-text">
+                        Body:&nbsp;
+                        <br>
+                        {{post.body}}
+                    </p>
+                    <br>
+                    <button type="button" class="btn btn-primary" (click)="navigateTo(post.id)">Edit</button>
+                    <!-- <button type="button" class="btn btn-primary"
+                        [routerLink]="['/posts','update',post.id]">Edit</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

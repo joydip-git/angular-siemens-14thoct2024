@@ -1,11 +1,33 @@
 import { Injectable } from "@angular/core";
 import { ServiceContract } from "../../models/servicecontract";
 import { Product } from "../../models/product";
-import { productRepository } from "../../data/productrepository";
+import { HttpClient } from "@angular/common/http";
+import { ApiResponse } from "../../models/apiresponse";
+import { APP_CONSTANTS } from "../../utilities/appconstants";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class ProductService implements ServiceContract<Product> {
-    getAll(): Product[] {
-        return [...productRepository]
+    constructor(private http: HttpClient) {
+    }
+
+    getAll() {
+        return this.http.get<ApiResponse<Product[]>>(APP_CONSTANTS.PRODUCT_API_URL)
+    }
+
+    get(id: number): Observable<ApiResponse<Product>> {
+        return this.http.get<ApiResponse<Product>>(`${APP_CONSTANTS.PRODUCT_API_URL}/${id}`)
+    }
+
+    add(modelValue: Product): Observable<ApiResponse<Product[]>> {
+        return this.http.post<ApiResponse<Product[]>>(APP_CONSTANTS.PRODUCT_API_URL, modelValue)
+    }
+
+    update(id: number, modelValue: Product): Observable<ApiResponse<Product[]>> {
+        return this.http.put<ApiResponse<Product[]>>(`${APP_CONSTANTS.PRODUCT_API_URL}/${id}`, modelValue)
+    }
+
+    delete(id: number): Observable<ApiResponse<Product[]>> {
+        return this.http.delete<ApiResponse<Product[]>>(`${APP_CONSTANTS.PRODUCT_API_URL}/${id}`)
     }
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { PostListComponent } from "./components/post-list/post-list.component";
 import { AddPostComponent } from "./components/add-post/add-post.component";
 import { UpdatePostComponent } from "./components/update-post/update-post.component";
+import { ViewPostComponent } from "./components/view-post/view-post.component";
 
 //individual route configuration
 // const postRoutes: Routes = [
@@ -28,6 +29,9 @@ const postRoutes: Routes = [
             },
             {
                 path: 'add', component: AddPostComponent
+            },
+            {
+                path: 'view/:id', component: ViewPostComponent
             },
             {
                 path: 'update/:id', component: UpdatePostComponent

@@ -3,7 +3,7 @@
         <div *ngIf="posts && posts.length>0;else norecordTemplate">
             <ol>
                 <li *ngFor="let p of posts">
-                    {{p.title}}
+                    <a [routerLink]="['/posts','view',p.id]">{{p.title}}</a>
                 </li>
             </ol>
         </div>

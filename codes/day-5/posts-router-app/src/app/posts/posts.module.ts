@@ -7,6 +7,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { UpdatePostComponent } from './components/update-post/update-post.component';
 import { PostsRoutingModule } from './posts-routing.module';
 import { ViewPostComponent } from './components/view-post/view-post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,8 @@ import { ViewPostComponent } from './components/view-post/view-post.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     PostsRoutingModule
   ],
   providers: [

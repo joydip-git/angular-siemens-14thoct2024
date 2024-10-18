@@ -14,7 +14,13 @@ app
 	products (directory)
 		products.module.ts
 	
-		components (directory)		
+		components (directory)	
+
+			add-product
+
+			view-product
+
+			update-product	
 
 			product-container => will nest product-list, product-sorting, product-filtration components
 				product-container.component.ts

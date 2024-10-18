@@ -146,6 +146,31 @@ built-in services:
 3. Router => represents the router itself
 
 
+Form data handling:
+-------------------------------
+a. template-driven: 
+everything is controlled from template/view using directives, such as ngModel, ngForm etc.
+you don't have any direct access to the FormControl, FormGroup etc. objects
+the data passing is asynchronous
+hard to unit test
+no reusability
+used in forms with small amount of data
+
+directives: ngModel, ngForm etc.
+classes: FormGroup, FormControl etc.
+module: FormsModule
+package: @angular/forms
 
 
+b. reactive form:
+everything is controlled from code. there is no need of ngModel, ngForm etc.
+you have direct access to the FormControl, FormGroup etc. objects
+the data passing is synchronous
+easy to unit test
+reusability
+used in forms with large amount of data
+
+directives: formControl, formControlName, formGroup, formGroupName etc.
+module: ReactiveFormsModule
+package: @angular/forms
 

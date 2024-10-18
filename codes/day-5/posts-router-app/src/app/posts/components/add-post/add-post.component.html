@@ -1,1 +1,45 @@
-<p>add-post works!</p>
+<!-- <form ngForm #addFrm="ngForm" (submit)="submitData(addFrm)">
+    <div>
+        <label for="txtId">Id: &nbsp;</label>
+        <input type="number" id="txtId" name="id" [(ngModel)]="post.id">
+    </div>
+    <div>
+        <label for="txtUserId">User Id: &nbsp;</label>
+        <input type="number" id="txtUserId" name="userId" [(ngModel)]="post.userId">
+    </div>
+    <div>
+        <label for="txtTitle">Title: &nbsp;</label>
+        <input type="text" id="txtTitle" name="title" [(ngModel)]="post.title">
+    </div>
+    <div>
+        <label for="txtBody">Body: &nbsp;</label>
+        <textarea id="txtBody" cols="50" rows="10" name="body" [(ngModel)]="post.body">
+        </textarea>
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form> -->
+
+<form [formGroup]="addFrm" (submit)="submitData()">
+    <div>
+        <label for="txtId">Id: &nbsp;</label>
+        <input type="number" id="txtId" formControlName="id">
+    </div>
+    <div>
+        <label for="txtUserId">User Id: &nbsp;</label>
+        <input type="number" id="txtUserId" formControlName="userId">
+    </div>
+    <div>
+        <label for="txtTitle">Title: &nbsp;</label>
+        <input type="text" id="txtTitle" formControlName="title">
+    </div>
+    <div>
+        <label for="txtBody">Body: &nbsp;</label>
+        <textarea id="txtBody" cols="50" rows="10" formControlName="body">
+        </textarea>
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>

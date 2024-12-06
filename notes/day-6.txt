@@ -1,0 +1,115 @@
+authentication
+testing
+hosting angular in wpf using webview2
+
+{ "message":"", "data":[{},{},..]|{}|null }
+
+ApiResponse<TData> => 
+message:string, 
+data:TData|null
+
+http.get<ApiResponse<Product[]>>(url)
+
+{ "message":"", "data":{} }
+http.get<ApiResponse<Product>>(url+'/'+id)
+
+Service and DI:
+-----------------------
+create the service
+decorate with @Injectable()
+regsiter a provider for the service, with angular
+
+providers:[
+	//1.A.
+	//ProductService,
+	//1.B.
+	{
+	  provide: ProductService, <= token
+	  useClass:ProductService  <= service type
+	},
+
+	//2.
+	{
+		token:'P_S_TOKEN',
+		useClass:ProductService
+	}
+]
+
+token => service
+
+1.A and B.
+constructor(private ps:ProductService){}
+
+2.
+private ps:ProductService;
+constructor(@Inject('P_S_TOKEN') ps:ProductService){ this.ps = ps; }
+
+3. loose coupling
+interface ServiceContract<TModel> {}
+
+private ps:ServiceContract<Product> ;
+constructor(@Inject('P_S_TOKEN') ps:ServiceContract<TModel> ){ 
+	this.ps = ps; 
+}
+
+
+@Inject =>  decorator [applied on an argument of a method]
+inject() => method
+
+HttpClient => built-in service class and its provider is registered with HttpClientModule (built-in)
+hence you need to import this module (older versions and depricated)
+
+hence you need to call the provideHttpClient() method to get service provider of the HttpClient class (latest)
+
+@Injectable() => when angular tries to create an instance of a class, if that class has some other dependency, angular needs to extract information (metadata) about that dependency. for this reason the main service class must be decorated with @Injectable()
+
+RxJS => Reactive Extensions to JavaScript
+APIs for asynchronous programming in Angular, such async data fetch from backend API server, async data fetch from file, async web socket request, async event triggering,....
+
+
+HttpClient methods => send HTTP requests to the backend asynchronously
+		      i.e., the method calls do not wait for the response, hence they do not block the main (single) JS thread
+		      these methods uses Observable oject (from RxJS) which stores the response in near future and over the time
+
+other parties who are using service class methods, that return Observable, must subscribe to that Observable
+	while subscribing to the observable one must pass an object to that method as an argument, which is known as Observer object. this actually is collection of 3 (max and optional) properties, each refering to a callback method. these properties are - next, error and complete
+next callback => is invoked when observable gets proper response
+error callback => is invoked when observable gets error response
+complete callback => is invoked after next callback, so that you can perform other asyn/sync operations after you have received proper response
+
+imports {PipeTransform, Pipe} from '@angular/core'
+
+@Pipe({ name:'uppercase'})
+class UppercasePipe implememts PipeTransform{
+	transform(value:string, ...args:any[]){
+		return value.toLocaleUpperCase()
+	}
+}
+
+@Pipe({ name:'currency'})
+class CurrencyPipe implememts PipeTransform{
+	transform(value:string, ...args:any[]){
+		return value.toLocaleUpperCase()
+	}
+}
+
+@NgModule({
+	providers:[],
+	declarations:[UpperCasePipe,CurrencyPipe, SampleComponent]
+})
+
+
+view/template:
+{{	name|uppercase	}}
+{{	price|currency:'INR':0:'': }}
+
+
+
+		      
+
+
+
+
+
+
+

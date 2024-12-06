@@ -7,7 +7,7 @@ import { ProductContainerComponent } from './components/product-container/produc
 import { ProductFiltrationComponent } from './components/product-filtration/product-filtration.component';
 import { ProductSortingComponent } from './components/product-sorting/product-sorting.component';
 import { APP_CONSTANTS } from '../utilities/appconstants';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,10 +19,12 @@ import { provideHttpClient } from '@angular/common/http';
     ProductSortingComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    //HttpClientModule (depricated)
   ],
   providers: [
     provideHttpClient(),
+    //provider for ProductService
     {
       provide: APP_CONSTANTS.PRODUCT_SERVICE_TOKEN,
       useClass: APP_CONSTANTS.PRODUCT_SERVICE_TYPE

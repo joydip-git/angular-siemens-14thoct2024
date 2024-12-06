@@ -39,23 +39,26 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.getSubscription =
       this.ps
         .getAll()
-        .subscribe({
-          next: (apiResponse: ApiResponse<Product[]>) => {
-            if (apiResponse.data !== null) {
-              this.products = apiResponse.data
-              this.errorInfo = ''
-              this.fetchComplete = true
-            } else {
+        .subscribe(
+          {
+            next: (apiResponse: ApiResponse<Product[]>) => {
+              if (apiResponse.data !== null) {
+                this.products = apiResponse.data
+                this.errorInfo = ''
+                this.fetchComplete = true
+              } else {
+                this.products = undefined
+                this.errorInfo = apiResponse.message
+                this.fetchComplete = true
+              }
+            },
+            error: (e) => {
               this.products = undefined
-              this.errorInfo = apiResponse.message
+              this.errorInfo = e.message
               this.fetchComplete = true
-            }
-          },
-          error: (e) => {
-            this.products = undefined
-            this.errorInfo = e.message
-            this.fetchComplete = true
+            },
+            complete: () => { }
           }
-        })
+        )
   }
 }

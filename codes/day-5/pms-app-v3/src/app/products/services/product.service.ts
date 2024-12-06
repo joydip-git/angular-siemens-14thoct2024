@@ -8,10 +8,15 @@ import { Observable } from "rxjs";
 
 @Injectable()
 export class ProductService implements ServiceContract<Product> {
+    // private http: HttpClient;
+    // constructor(http: HttpClient) {
+    //     this.http = http
+    // }
+
     constructor(private http: HttpClient) {
     }
 
-    getAll() {
+    getAll(): Observable<ApiResponse<Product[]>> {
         return this.http.get<ApiResponse<Product[]>>(APP_CONSTANTS.PRODUCT_API_URL)
     }
 

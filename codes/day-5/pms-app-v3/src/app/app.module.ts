@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UsersModule } from './users/users.module';
 import { TokenService } from './services/token.service';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { TokenInterceptorService } from './services/tokeninterceptor.service';
 
 const appRoutes: Routes = [
   {
@@ -27,7 +29,18 @@ const appRoutes: Routes = [
     UsersModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [TokenService],
+  providers: [
+    TokenService,
+
+    provideHttpClient(
+      withInterceptors([TokenInterceptorService])
+    )
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useExisting: TokeninterceptorService,
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

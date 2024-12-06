@@ -54,7 +54,9 @@ constructor(@Inject('P_S_TOKEN') ps:ServiceContract<TModel> ){
 
 
 @Inject =>  decorator [applied on an argument of a method]
-inject() => method
+inject() => method @angular/core
+
+//inject() => angular testing inject() method for DI
 
 HttpClient => built-in service class and its provider is registered with HttpClientModule (built-in)
 hence you need to import this module (older versions and depricated)

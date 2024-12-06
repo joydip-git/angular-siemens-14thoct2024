@@ -1,15 +1,17 @@
-<form>
+<form [formGroup]="loginForm" (submit)="submit()">
     <fieldset>
         <legend>Login</legend>
         <div>
             <label for="txtUserName" class="form-label mt-4">User Name:</label>
-            <input type="email" class="form-control" id="txtUserName" placeholder="Enter email">
+            <input type="email" class="form-control" id="txtUserName" placeholder="Enter email"
+                formControlName="username">
         </div>
         <div>
             <label for="txtPassword" class="form-label mt-4">
                 Password:
             </label>
-            <input type="password" class="form-control" id="txtPassword" placeholder="Enter email">
+            <input type="password" class="form-control" id="txtPassword" placeholder="Enter email"
+                formControlName="password">
         </div>
         <div style="text-align: center;">
             <input type="submit" value="Login" class="btn btn-primary">

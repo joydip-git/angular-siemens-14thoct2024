@@ -1,8 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../../models/user';
 import { Subscription } from 'rxjs';
+import { TokenService } from '../../../services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,27 +16,35 @@ export class LoginComponent implements OnDestroy {
   private userSubscription?: Subscription;
 
   constructor(
-    private builder: FormBuilder,
-    private userSvc: UserService
+    private userSvc: UserService,
+    private tokenSvc: TokenService,
+    private router: Router
   ) {
-    this.loginForm = this.builder.group({
-      username: ['enter email as username'],
-      password: ['enter password']
-    })
+    this.loginForm = new FormGroup(
+      {
+        username: new FormControl('enter email as username'),
+        password: new FormControl('enter password')
+      }
+    )
   }
   submit() {
     const user = (<User>this.loginForm.value)
-    this.userSubscription = this.userSvc
+    this.userSubscription = this
+      .userSvc
       .authenticate(user)
       .subscribe({
-        next: () => {
-
+        next: (apiResponse) => {
+          if (apiResponse.data !== null) {
+            this.tokenSvc.saveToken(apiResponse.data)
+          } else {
+            alert('invalid user')
+          }
         },
-        error: () => {
-
+        error: (err) => {
+          alert('error ' + err.message)
         },
         complete: () => {
-
+          this.router.navigate(['/products'])
         }
       })
   }

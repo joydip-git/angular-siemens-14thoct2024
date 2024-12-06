@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Subscription } from 'rxjs';
 import { User } from '../../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -15,7 +16,8 @@ export class RegistrationComponent implements OnDestroy {
 
   constructor(
     private builder: FormBuilder,
-    private userSvc: UserService
+    private userSvc: UserService,
+    private router: Router
   ) {
     this.regForm = this.builder.group({
       username: ['enter email as username'],
@@ -30,14 +32,18 @@ export class RegistrationComponent implements OnDestroy {
     this.userSubscription = this.userSvc
       .register(user)
       .subscribe({
-        next: () => {
-
+        next: (apiResponse) => {
+          if (apiResponse.data !== null) {
+            alert('successfully registered')
+          } else {
+            alert('error ' + apiResponse.message)
+          }
         },
-        error: () => {
-
+        error: (err) => {
+          alert('error ' + err.message)
         },
         complete: () => {
-
+          this.router.navigate(['/user/login']);
         }
       })
   }

@@ -14,6 +14,7 @@ export class UserService {
   authenticate(user: User): Observable<ApiResponse<string>> {
     return this.http.post<ApiResponse<string>>(`${APP_CONSTANTS.USERS_API_URL}/authenticate`, user)
   }
+
   register(user: User): Observable<ApiResponse<User>> {
     return this.http.post<ApiResponse<User>>(`${APP_CONSTANTS.USERS_API_URL}/register`, user)
   }

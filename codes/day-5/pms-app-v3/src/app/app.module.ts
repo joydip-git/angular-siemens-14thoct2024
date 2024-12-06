@@ -6,6 +6,8 @@ import { ProductsModule } from './products/products.module';
 import { AppCommonModule } from './app-common/app-common.module';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UsersModule } from './users/users.module';
+import { TokenService } from './services/token.service';
 
 const appRoutes: Routes = [
   {
@@ -22,9 +24,10 @@ const appRoutes: Routes = [
     BrowserModule,
     ProductsModule,
     AppCommonModule,
+    UsersModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,10 @@ import { ProductFiltrationComponent } from './components/product-filtration/prod
 import { ProductSortingComponent } from './components/product-sorting/product-sorting.component';
 import { APP_CONSTANTS } from '../utilities/appconstants';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductsRoutingModule } from './products-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +20,14 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
     ProductContainerComponent,
     ProductListComponent,
     ProductFiltrationComponent,
-    ProductSortingComponent
+    ProductSortingComponent,
+    AddProductComponent,
+    UpdateProductComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,
+    ProductsRoutingModule
     //HttpClientModule (depricated)
   ],
   providers: [
